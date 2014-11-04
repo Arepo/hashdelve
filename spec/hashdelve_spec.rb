@@ -12,3 +12,36 @@
 
 # The result of passing in any key that exists in the hash to the find value method should return that value, i.e. passing it 'e' will return 'Nesting'
 require 'hashdelve'
+require 'byebug'
+
+describe 'hashdelve' do 
+
+  describe 'symbolize_keys' do
+
+    xit 'returns an empty hash when called on an empty hash' do
+       # returning weird error
+       expect({}.symbolize_keys).to eq {}
+
+    end
+
+    it 'returns {a: :b} when called on {"a" => :b}' do
+      
+      expect({"hash_key1" => :hash_val1}.symbolize_keys).to eq({hash_key1: :hash_val1})
+
+    end
+
+    it 'returns {c: :d, e: :f} when called on {"c" => :d, "e" => :f}' do
+      
+      expect({"hash_key1" => :hash_val1, "hash_key2" => :hash_val2}.symbolize_keys).to eq({hash_key1: :hash_val1, hash_key2: :hash_val2})
+
+    end
+
+    xit 'returns {a: {b: :c}} when called on {"a" => {"b" => :c}}' do
+
+      expect({"a" => {"b" => :c}}.symbolize_keys).to eq({a: {b: :c}})
+
+    end
+
+  end
+
+end
