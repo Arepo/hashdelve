@@ -21,29 +21,32 @@ describe 'hashdelve' do
     xit 'returns an empty hash when called on an empty hash' do
        # returning weird error
        expect({}.symbolize_keys).to eq {}
-
     end
 
     it 'when given a single-pair hash with a string key, returns a similar hash with a symbol key' do
-      
-      expect({"hash_key1" => :hash_val1}.symbolize_keys).to eq({hash_key1: :hash_val1})
-
+      expect({"symbolizee" => :hash_val}.symbolize_keys).to eq({symbolizee: :hash_val})
     end
 
     it 'returns symbolized keys for each key when called on ' do
-      
-      expect({"hash_key1" => :hash_val1, "hash_key2" => :hash_val2}.symbolize_keys).to eq({hash_key1: :hash_val1, hash_key2: :hash_val2})
-
+      expect({"symbolizee1" => :hash_val1, "symbolizee2" => :hash_val2}.symbolize_keys).to eq({symbolizee1: :hash_val1, symbolizee2: :hash_val2})
     end
 
     it 'returns symbolized keys for all the keys in a nested hash' do
-
-      expect({"hash_key1" => {"hash_key2" => :hash_val1}}.symbolize_keys).to eq({hash_key1: {hash_key2: :hash_val1}})
-
+      expect({"symbolizee1" => {"symbolizee2" => :hash_val}}.symbolize_keys).to eq({symbolizee1: {symbolizee2: :hash_val}})
     end
 
   end
 
+  describe 'extract_keys' do
 
+    it 'returns nil when called on an empty hash' do
+      expect({}.extract_keys).to eq nil
+    end
+
+    it 'returns the key when called on a single pair hash' do
+
+    end
+
+  end
 
 end

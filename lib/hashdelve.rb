@@ -9,4 +9,8 @@ class Hash
     symbolized_hash
   end
 
+  def extract_keys
+
+  end
+
 end
