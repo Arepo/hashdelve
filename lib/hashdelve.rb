@@ -17,7 +17,9 @@ class Hash
   end
 
   def fetch_nested(key)
-     fetch(key)
+    return self[key] if self[key]
+    each_value {|value| return value.fetch_nested(key) if value.is_a?(Hash)}
+    nil
   end
 
 end

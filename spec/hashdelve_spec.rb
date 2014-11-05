@@ -59,16 +59,20 @@ describe 'hashdelve' do
 
   describe 'fetch_nested' do
 
-    it 'raises a KeyError when called on an empty hash' do
-      expect{{}.fetch_nested :key}.to raise_error(KeyError)
+    it 'returns nil when called on an empty hash' do
+      expect({}.fetch_nested :key).to eq nil
     end
 
     it "returns nil when called on a populated hash that doesn't have the right key" do
-      expect{{key: :val}.fetch_nested(:three_headed_monkey)}.to raise_error(KeyError)
+      expect({key: :val}.fetch_nested(:three_headed_monkey)).to eq nil
     end
 
-    it 'returns the key when called with the right value on a single-pair hash' do
+    it 'returns the value when called with the right key on a single-pair hash' do
       expect({key: :val}.fetch_nested(:key)).to eq :val
+    end
+
+    it "returns the value when called with a key that's in a nested hash" do
+      expect({easy_key: {tricky_key: :jackpot}}.fetch_nested(:tricky_key)).to eq :jackpot
     end
 
   end
