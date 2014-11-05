@@ -18,9 +18,9 @@ describe 'hashdelve' do
 
   describe 'symbolize_keys' do
 
-    xit 'returns an empty hash when called on an empty hash' do
+    it 'returns an empty hash when called on an empty hash' do
        # returning weird error
-       expect({}.symbolize_keys).to eq {}
+       expect({}.symbolize_keys).to eq({})
     end
 
     it 'when given a single-pair hash with a string key, returns a similar hash with a symbol key' do
@@ -39,13 +39,23 @@ describe 'hashdelve' do
 
   describe 'extract_keys' do
 
-    it 'returns nil when called on an empty hash' do
-      expect({}.extract_keys).to eq nil
+    it 'returns an empty array when called on an empty hash' do
+      expect({}.extract_keys).to eq []
     end
 
-    it 'returns the key when called on a single pair hash' do
-
+    it 'returns the the key (in an array) when called on a single pair hash' do
+      expect({pick_me!: :leave_me_behind}.extract_keys).to eq [:pick_me!]
     end
+
+    it 'returns the keys when called on a hash with two pairs' do
+      expect({pick_me!: :not_me, and_me!: :no_one_loves_me}.extract_keys).to eq [:pick_me!, :and_me!]
+    end
+
+    it 'returns the keys when called on a nested hash' do
+      expect({pick_me!: {and_me!: :muffled_sobs}}.extract_keys).to eq [:pick_me!, :and_me!]
+    end
+
+
 
   end
 
