@@ -11,9 +11,13 @@ class Hash
 
   def extract_keys
     inject([]) do |new_array, (key, value)|
-      new_array << key 
+      new_array << key
       new_array + (value.is_a?(Hash) ? value.extract_keys : [])
     end
+  end
+
+  def fetch_nested(key)
+     fetch(key)
   end
 
 end

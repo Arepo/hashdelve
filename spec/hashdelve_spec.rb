@@ -55,7 +55,21 @@ describe 'hashdelve' do
       expect({pick_me!: {and_me!: :muffled_sobs}}.extract_keys).to eq [:pick_me!, :and_me!]
     end
 
+  end
 
+  describe 'fetch_nested' do
+
+    it 'raises a KeyError when called on an empty hash' do
+      expect{{}.fetch_nested :key}.to raise_error(KeyError)
+    end
+
+    it "returns nil when called on a populated hash that doesn't have the right key" do
+      expect{{key: :val}.fetch_nested(:three_headed_monkey)}.to raise_error(KeyError)
+    end
+
+    it 'returns the key when called with the right value on a single-pair hash' do
+      expect({key: :val}.fetch_nested(:key)).to eq :val
+    end
 
   end
 
