@@ -24,24 +24,26 @@ describe 'hashdelve' do
 
     end
 
-    it 'returns {a: :b} when called on {"a" => :b}' do
+    it 'when given a single-pair hash with a string key, returns a similar hash with a symbol key' do
       
       expect({"hash_key1" => :hash_val1}.symbolize_keys).to eq({hash_key1: :hash_val1})
 
     end
 
-    it 'returns {c: :d, e: :f} when called on {"c" => :d, "e" => :f}' do
+    it 'returns symbolized keys for each key when called on ' do
       
       expect({"hash_key1" => :hash_val1, "hash_key2" => :hash_val2}.symbolize_keys).to eq({hash_key1: :hash_val1, hash_key2: :hash_val2})
 
     end
 
-    it 'returns {a: {b: :c}} when called on {"a" => {"b" => :c}}' do
+    it 'returns symbolized keys for all the keys in a nested hash' do
 
-      expect({"a" => {"b" => :c}}.symbolize_keys).to eq({a: {b: :c}})
+      expect({"hash_key1" => {"hash_key2" => :hash_val1}}.symbolize_keys).to eq({hash_key1: {hash_key2: :hash_val1}})
 
     end
 
   end
+
+
 
 end
