@@ -36,7 +36,7 @@ describe 'hashdelve' do
 
     end
 
-    xit 'returns {a: {b: :c}} when called on {"a" => {"b" => :c}}' do
+    it 'returns {a: {b: :c}} when called on {"a" => {"b" => :c}}' do
 
       expect({"a" => {"b" => :c}}.symbolize_keys).to eq({a: {b: :c}})
 
