@@ -75,6 +75,10 @@ describe 'hashdelve' do
       expect({easy_key: {tricky_key: :jackpot}}.fetch_nested(:tricky_key)).to eq :jackpot
     end
 
+    it "returns the value when called with a key that's in a subsequent nested hash" do
+      expect({easy_key: {less_easy_key: :fools_gold}, easy_key2: {tricky_key: :jackpot}}.fetch_nested(:tricky_key)).to eq :jackpot
+    end
+
   end
 
 end

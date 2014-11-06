@@ -18,8 +18,11 @@ class Hash
 
   def fetch_nested(key)
     return self[key] if self[key]
-    each_value {|value| return value.fetch_nested(key) if value.is_a?(Hash)}
-    nil
+    return unless each_value do |value|
+      if value.is_a?(Hash)
+        return value.fetch_nested(key) if value.fetch_nested(key)
+      end
+    end
   end
 
 end
