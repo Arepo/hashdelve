@@ -17,4 +17,4 @@ This was a tech test for (company), made public here with their permission. The 
 
 > The result of passing in any key that exists in the hash to the find value method should return that value, i.e. passing it 'e' will return 'Nesting'
 
-To play with the methods ('symbolize_keys', 'extract_keys' and 'fetch_nested(key)', require 'lib/hashdelve', and call them on your arbitrarily complex hash of choice.
+To play with the methods ('symbolize_keys', 'extract_keys' and 'fetch_nested(key)', require 'lib/hashdelve'), and call them on your arbitrarily complex hash of choice.
